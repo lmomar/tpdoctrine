@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+    <div class="form-group">
+        <label for="">{{ form_label(form.title) }}</label>
+        {{ form_widget(form.title,{'attr':{'class':'form-control'}}) }}
+    </div>
+   <div class="form-group">
+       <label for=""> {{ form_label(form.disabled) }}</label>
+       {{ form_widget(form.disabled) }}
+   </div>
+    {{  form_end(form) }}
+{% endblock %}

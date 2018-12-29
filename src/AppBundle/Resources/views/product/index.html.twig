@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-primary" href="{{ path('product_add') }}">New product</a>
+    <table class="table table-bordred table-condensed table-responsive">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Created at</th>
+            <th>Disabled</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in products %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>{{ p.createdAt|date('d/m/Y') }}</td>
+                <td>
+                    {% if p.disabled %}
+                        <input type="checkbox" checked>
+                    {% else %}
+                        <input type="checkbox">
+                    {% endif %}
+                </td>
+                <td>{{ p.category }}</td>
+                <td>
+                    <a href="{{ path('category_edit',{'id': p.id}) }}" class="btn btn-warning btn-xs">Edit</a>
+                    <a href="" class="btn btn-danger btn-xs">Disable</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
